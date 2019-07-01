@@ -2,6 +2,7 @@ FROM centos:7
 MAINTAINER Fe
 WORKDIR /data
 RUN yum install -y wget
+RUN echo 'Asia/Shanghai' >/etc/timezone
 RUN rm -rf /etc/yum.repos.d/* 
 RUN wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
 RUN yum clean all
