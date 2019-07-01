@@ -1,6 +1,6 @@
 FROM centos:7
 MAINTAINER Fe
-WORKDIR /root
+WORKDIR /data
 RUN yum install -y wget
 RUN echo 'Asia/Shanghai' >/etc/timezone
 RUN rm -rf /etc/yum.repos.d/* 
