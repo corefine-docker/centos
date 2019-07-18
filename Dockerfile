@@ -4,7 +4,7 @@ WORKDIR /data
 RUN yum install -y wget
 RUN rm -rf /etc/yum.repos.d/* 
 RUN wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
-RUN yum install -y openssh-server sudo wget vi vim lrzsz zip unzip git net-tools
+RUN yum install -y openssh-server sudo wget vi vim lrzsz zip unzip git net-tools python-setuptools
 RUN yum clean all
 RUN \cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 RUN sed -i 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config
