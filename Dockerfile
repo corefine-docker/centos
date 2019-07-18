@@ -7,14 +7,10 @@ RUN wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Cen
 RUN yum install -y openssh-server sudo wget vi vim lrzsz zip unzip git net-tools python-setuptools
 RUN yum clean all
 RUN \cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
-RUN sed -i 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config
-RUN useradd admin 
-RUN echo "root:root" | chpasswd 
-RUN ssh-keygen -t dsa -f /etc/ssh/ssh_host_dsa_key
-RUN ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key
-RUN ssh-keygen -t ed25519 -f /etc/ssh/ssh_host_ed25519_key
-RUN mkdir /var/run/sshd
-RUN easy_install pip && pip install supervisor
+RUN rm -f /etc/ssh/ssh_host_dsa_key /etc/ssh/ssh_host_rsa_key && \
+    ssh-keygen -q -N "" -t dsa -f /etc/ssh/ssh_host_dsa_key && \
+    ssh-keygen -q -N "" -t rsa -f /etc/ssh/ssh_host_rsa_key
+RUN sed -i '/pam_loginuid.so/c session    optional     pam_loginuid.so'  /etc/pam.d/sshd
 COPY supervisord.conf /etc/supervisord.conf
 COPY ssh_init.sh /root/ssh_init.sh
 EXPOSE 22
