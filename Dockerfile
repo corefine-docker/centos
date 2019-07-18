@@ -16,5 +16,6 @@ RUN ssh-keygen -t ed25519 -f /etc/ssh/ssh_host_ed25519_key
 RUN mkdir /var/run/sshd
 RUN easy_install pip && pip install supervisor
 COPY supervisord.conf /etc/supervisord.conf
+COPY ssh_init.sh /root/ssh_init.sh
 EXPOSE 22
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
