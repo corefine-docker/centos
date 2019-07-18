@@ -14,5 +14,7 @@ RUN ssh-keygen -t dsa -f /etc/ssh/ssh_host_dsa_key
 RUN ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key
 RUN ssh-keygen -t ed25519 -f /etc/ssh/ssh_host_ed25519_key
 RUN mkdir /var/run/sshd
+RUN easy_install pip && pip install supervisor
+COPY supervisord.conf /etc/supervisord.conf
 EXPOSE 22
-CMD ["/usr/sbin/sshd", "-D"]
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
