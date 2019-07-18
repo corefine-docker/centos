@@ -2,7 +2,7 @@ FROM centos:7
 MAINTAINER Fe
 WORKDIR /data
 RUN yum install -y wget
-RUN echo 'Asia/Shanghai' >/etc/timezone
+RUN \cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 RUN rm -rf /etc/yum.repos.d/* 
 RUN wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
 RUN yum clean all
@@ -14,5 +14,6 @@ RUN ssh-keygen -t dsa -f /etc/ssh/ssh_host_dsa_key
 RUN ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key
 RUN ssh-keygen -t ed25519 -f /etc/ssh/ssh_host_ed25519_key
 RUN mkdir /var/run/sshd
+RUN timedatectl set-timezone Asia/Shanghai
 EXPOSE 22
 CMD ["/usr/sbin/sshd", "-D"]
