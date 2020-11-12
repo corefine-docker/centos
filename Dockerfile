@@ -4,7 +4,7 @@ WORKDIR /data
 RUN yum install -y wget
 RUN rm -rf /etc/yum.repos.d/* 
 RUN wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
-RUN yum install -y openssh-server sudo wget vi vim lrzsz zip unzip git net-tools python-setuptools
+RUN yum install -y openssh-server telnet sudo wget vi vim lrzsz zip unzip git net-tools python-setuptools
 RUN yum clean all
 RUN easy_install pip && pip install supervisor
 RUN \cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
