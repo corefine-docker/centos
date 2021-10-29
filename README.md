@@ -30,5 +30,3 @@ docker run --name my-centos -p 10022:22 -p 10080:8080 -e ROOTPASSWORD=123456 -d 
 docker run --name my-centos -p 10022:22 -p 10080:8080 -v /home/docker_volume/centos:/data -d fine/centos
 
 
-     
-     
