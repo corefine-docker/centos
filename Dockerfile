@@ -1,4 +1,4 @@
-FROM centos:7
+FROM centos:8
 MAINTAINER Fe
 WORKDIR /data
 RUN rm -rf /etc/yum.repos.d/* 
