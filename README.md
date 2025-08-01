@@ -20,9 +20,7 @@ root@127.0.0.1's password: **changeme**
 Last login: ...
 
 [root@f48b1859b017 ~]# 
-
-     
-
+ 
 ### 设置root密码为123456
 docker run --name my-centos -p 10022:22 -p 10080:8080 -e ROOTPASSWORD=123456 -d fine/centos
 
